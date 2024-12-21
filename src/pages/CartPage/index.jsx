@@ -25,13 +25,28 @@ export default function CartPage() {
         <>
           <ul className="space-y-4">
             {cart.map((item) => (
-              <li key={item.id} className="flex justify-between items-center">
-                <span>{item.title}</span>
-                <span>
-                  ${(item.quantity * item.discountedPrice).toFixed(2)}
-                </span>
+              <li
+                key={item.id}
+                className="flex flex-col sm:flex-row justify-between items-center sm:items-start gap-4 bg-gray-100 p-4 rounded shadow-md"
+              >
+                {/* Product Image */}
+                <img
+                  src={item.image.url}
+                  alt={item.image.alt || item.title}
+                  className="w-16 h-16 object-cover rounded"
+                />
+
+                {/* Product Details */}
+                <div className="flex flex-col">
+                  <span className="font-semibold">{item.title}</span>
+                  <span className="text-gray-600">
+                    ${(item.quantity * item.discountedPrice).toFixed(2)}
+                  </span>
+                </div>
+
+                {/* Remove Button */}
                 <button
-                  className="bg-red-500 text-white py-1 px-2 rounded"
+                  className="bg-red-500 text-white py-1 px-2 rounded self-end sm:self-center"
                   onClick={() => removeFromCart(item.id)}
                 >
                   Remove
@@ -41,8 +56,7 @@ export default function CartPage() {
           </ul>
           <p className="mt-4 font-bold">Total: ${total.toFixed(2)}</p>
 
-          {/* Buttons */}
-          <div className="flex gap-4 mt-6">
+          <div className="flex flex-wrap gap-4 mt-6">
             <button
               className="bg-green-500 text-white py-2 px-4 rounded"
               onClick={handleCheckout}
