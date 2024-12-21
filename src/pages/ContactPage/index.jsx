@@ -14,7 +14,10 @@ const schema = yup.object({
     .required("Subject is required."),
   email: yup
     .string()
-    .email("Must be a valid email address.")
+    .matches(
+      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+      "Must be a valid email address.",
+    )
     .required("Email is required."),
   body: yup
     .string()

@@ -12,17 +12,18 @@ export default function Home() {
   return (
     <main className="flex-grow p-4">
       {/* Search Bar */}
-      <SearchBar
-        products={data.data}
-        setFilteredProducts={setFilteredProducts}
-      />
+      <div className="w-full max-w-3xl mx-auto mb-6">
+        <SearchBar
+          products={data.data}
+          setFilteredProducts={setFilteredProducts}
+        />
+      </div>
 
-      {/* Product Cards */}
-      <div>
+      <div className="flex flex-col items-center">
         {isLoading && <p>Loading products...</p>}
         {isError && <p>Failed to load products. Please try again later.</p>}
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-5xl justify-center">
           {(filteredProducts.length > 0 ? filteredProducts : data.data)?.map(
             (product) => (
               <ProductCard
