@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useCart } from "../../contexts/cartContext";
 
 export default function ProductPage() {
-  const { productId } = useParams();
+  let { productId } = useParams();
   const { addToCart } = useCart();
   const [product, setProduct] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
