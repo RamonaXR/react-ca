@@ -3,6 +3,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
+/**
+ * CartIcon Component.
+ *
+ * This component renders a shopping cart icon with a badge that displays the total
+ * number of items in the cart. When the icon is clicked, the user is navigated to
+ * the checkout page.
+ *
+ * It uses the following hooks:
+ * - `useCart` to retrieve the current cart state from the cart context.
+ * - `useNavigate` from react-router-dom to handle navigation.
+ *
+ * @returns {JSX.Element} The rendered cart icon component.
+ */
 export default function CartIcon() {
   const { cart } = useCart();
   const navigate = useNavigate();

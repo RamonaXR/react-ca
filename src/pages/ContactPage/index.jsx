@@ -3,6 +3,11 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
+/**
+ * Schema for validating the contact form using yup.
+ *
+ * @type {yup.ObjectSchema}
+ */
 const schema = yup.object({
   fullName: yup
     .string()
@@ -25,6 +30,14 @@ const schema = yup.object({
     .required("Message is required."),
 });
 
+/**
+ * ContactPage Component.
+ *
+ * Renders a contact form with validation using React Hook Form and yup.
+ * When the form is successfully submitted, a success message is displayed.
+ *
+ * @returns {JSX.Element} The rendered ContactPage component.
+ */
 export default function ContactPage() {
   const [successMessage, setSuccessMessage] = useState("");
   const {
@@ -36,6 +49,13 @@ export default function ContactPage() {
     resolver: yupResolver(schema),
   });
 
+  /**
+   * Handles the form submission.
+   *
+   * Logs the form data, displays a success message, and resets the form.
+   *
+   * @param {Object} data - The form data.
+   */
   function onSubmit(data) {
     console.log("Form Data:", data);
     setSuccessMessage(
@@ -51,7 +71,6 @@ export default function ContactPage() {
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col gap-4 bg-gray-100 p-6 rounded-lg shadow-lg"
       >
-        {/* Full Name */}
         <label htmlFor="fullName" className="font-semibold">
           Full Name
         </label>
@@ -64,7 +83,6 @@ export default function ContactPage() {
         />
         <p className="text-red-500 text-sm">{errors.fullName?.message}</p>
 
-        {/* Subject */}
         <label htmlFor="subject" className="font-semibold">
           Subject
         </label>
@@ -77,7 +95,6 @@ export default function ContactPage() {
         />
         <p className="text-red-500 text-sm">{errors.subject?.message}</p>
 
-        {/* Email */}
         <label htmlFor="email" className="font-semibold">
           Email
         </label>
@@ -90,7 +107,6 @@ export default function ContactPage() {
         />
         <p className="text-red-500 text-sm">{errors.email?.message}</p>
 
-        {/* Message Body */}
         <label htmlFor="body" className="font-semibold">
           Message
         </label>
@@ -102,7 +118,6 @@ export default function ContactPage() {
         />
         <p className="text-red-500 text-sm">{errors.body?.message}</p>
 
-        {/* Submit Button */}
         <button
           type="submit"
           className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
@@ -111,7 +126,6 @@ export default function ContactPage() {
         </button>
       </form>
 
-      {/* Success Message */}
       {successMessage && (
         <p className="text-green-500 font-bold mt-4">{successMessage}</p>
       )}
