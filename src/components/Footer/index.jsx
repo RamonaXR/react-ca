@@ -1,3 +1,11 @@
+/**
+ * Footer Component.
+ *
+ * This component renders a footer element with a centered copyright notice
+ * displaying the current year and "Ramona Jensen".
+ *
+ * @returns {JSX.Element} The rendered footer component.
+ */
 export default function Footer() {
   return (
     <footer className="bg-gray-800 text-white py-4">

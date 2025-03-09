@@ -1,16 +1,29 @@
 import { useCart } from "../../contexts/cartContext";
 import { useNavigate } from "react-router-dom";
 
+/**
+ * CartPage Component.
+ *
+ * Renders the shopping cart page, displaying a list of products added to the cart along with their
+ * images, titles, and computed prices based on quantity and discounted price. It provides the ability
+ * to remove individual items from the cart, clear the entire cart, or proceed to checkout.
+ *
+ * The total price is calculated by summing the product of quantity and discountedPrice for each item in the cart.
+ *
+ * @returns {JSX.Element} The rendered CartPage component.
+ */
 export default function CartPage() {
   const { cart, removeFromCart, clearCart } = useCart();
   const navigate = useNavigate();
 
-  // Calculate the total price of items in the cart
   const total = cart.reduce(
     (sum, item) => sum + item.quantity * item.discountedPrice,
     0,
   );
 
+  /**
+   * Handles the checkout process by clearing the cart and navigating to the checkout success page.
+   */
   function handleCheckout() {
     clearCart();
     navigate("/checkout-success");

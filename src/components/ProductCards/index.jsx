@@ -1,9 +1,32 @@
-/* eslint-disable react/prop-types */
 import { useNavigate } from "react-router-dom";
 
+/**
+ * ProductCard Component.
+ *
+ * This component renders a card for a product that includes:
+ * - A clickable image that navigates to the product detail page.
+ * - The product title.
+ * - Pricing details showing the discounted price and, if applicable, the original price.
+ * - An "Add to Cart" button that triggers the addToCart callback.
+ *
+ * @param {Object} props - The component props.
+ * @param {Object} props.product - The product data.
+ * @param {string|number} props.product.id - The unique identifier for the product.
+ * @param {string} props.product.title - The title of the product.
+ * @param {Object} props.product.image - The image data for the product.
+ * @param {string} props.product.image.url - The URL of the product image.
+ * @param {string} [props.product.image.alt] - The alt text for the product image.
+ * @param {number} props.product.discountedPrice - The discounted price of the product.
+ * @param {number} props.product.price - The original price of the product.
+ * @param {Function} props.addToCart - Callback function to add the product to the cart.
+ * @returns {JSX.Element} The rendered ProductCard component.
+ */
 export default function ProductCard({ product, addToCart }) {
   const navigate = useNavigate();
 
+  /**
+   * Handles the click event on the product image by navigating to the product detail page.
+   */
   function handleProductClick() {
     navigate(`/product/${product.id}`);
   }

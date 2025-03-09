@@ -1,6 +1,20 @@
-/* eslint-disable react/prop-types */
 import { NavLink } from "react-router-dom";
 
+/**
+ * NavBar Component.
+ *
+ * Renders a navigation bar with links to "Home" and "Contact".
+ * The layout adjusts based on the `isMobile` prop:
+ * - In mobile view, the navigation is displayed as a vertically stacked menu.
+ * - In desktop view, the navigation is hidden on smaller screens and displayed on medium and larger screens.
+ *
+ * The `closeMenu` callback is invoked when a link is clicked in mobile view, allowing the menu to be closed.
+ *
+ * @param {Object} props - The component props.
+ * @param {boolean} props.isMobile - Indicates if the mobile view is active.
+ * @param {Function} props.closeMenu - Callback function to close the mobile menu.
+ * @returns {JSX.Element} The rendered NavBar component.
+ */
 export default function NavBar({ isMobile, closeMenu }) {
   const commonClasses = "hover:underline text-lg p-2";
 

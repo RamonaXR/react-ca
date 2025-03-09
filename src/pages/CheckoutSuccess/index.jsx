@@ -1,5 +1,13 @@
 import { Link } from "react-router-dom";
 
+/**
+ * CheckoutSuccess Component.
+ *
+ * This component renders a success message indicating that the order has been
+ * placed successfully. It provides a button that navigates the user back to the store.
+ *
+ * @returns {JSX.Element} The rendered CheckoutSuccess component.
+ */
 export default function CheckoutSuccess() {
   return (
     <main className="p-4 flex flex-col items-center">
